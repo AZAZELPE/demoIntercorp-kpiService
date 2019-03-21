@@ -20,7 +20,7 @@ public class KpiService{
 
         List<Integer> edades = kpiUpdateData.getEdades();
         Double averageEdades = MathUtils.calculateAverage(edades);
-        Double SDEdades = MathUtils.calculateAverage(edades);
+        Double SDEdades = MathUtils.calculateSD(edades);
 
         Kpi kpi = new Kpi();
         kpi.setPromedioEdadTodosClientes(averageEdades);

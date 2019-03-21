@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping()
 public class kpiController {
 
     @Autowired
@@ -29,6 +29,7 @@ public class kpiController {
     @PostMapping("/updateKpi")
     @ResponseBody
     public ResponseEntity<Object> updateKpi(@RequestBody KpiUpdateData kpiUpdateData) {
+
         if(kpiUpdateData.getEdades().isEmpty())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 
