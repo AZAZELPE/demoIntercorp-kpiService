@@ -22,7 +22,11 @@ public class KpiService{
         Double averageEdades = MathUtils.calculateAverage(edades);
         Double SDEdades = MathUtils.calculateAverage(edades);
 
-        return kpiRepository.save(new Kpi(averageEdades,SDEdades));
+        Kpi kpi = new Kpi();
+        kpi.setPromedioEdadTodosClientes(averageEdades);
+        kpi.setDesvEstandarEdadTodosClientes(SDEdades);
+
+        return kpiRepository.save(kpi);
     }
 
 

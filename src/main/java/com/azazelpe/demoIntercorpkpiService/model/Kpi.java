@@ -34,11 +34,6 @@ public class Kpi {
     @LastModifiedDate
     private Date updatedAt;
 
-    public Kpi(Double promedioEdadTodosClientes, Double desvEstandarEdadTodosClientes) {
-        this.promedioEdadTodosClientes = promedioEdadTodosClientes;
-        this.desvEstandarEdadTodosClientes = desvEstandarEdadTodosClientes;
-    }
-
     public Long getId() {
         return id;
     }

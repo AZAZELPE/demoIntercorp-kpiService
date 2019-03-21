@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,15 +22,18 @@ public class kpiController {
 
 
     @GetMapping("/kpideclientes")
-    public List<Kpi> getAllKpi() {
-        return kpiRepository.findAll();
+    public Kpi getKpi() {
+        return kpiRepository.findTopByOrderByIdDesc();
     }
 
     @PostMapping("/updateKpi")
     @ResponseBody
-    public ResponseEntity<Void> updateKpi(@RequestBody KpiUpdateData kpiUpdateData) {
+    public ResponseEntity<Object> updateKpi(@RequestBody KpiUpdateData kpiUpdateData) {
+        if(kpiUpdateData.getEdades().isEmpty())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
         kpiService.updateKpi(kpiUpdateData);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return ResponseEntity.ok().body(null);
     }
 
 }
